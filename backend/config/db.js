@@ -3,7 +3,8 @@ const colors = require("colors");
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb://127.0.0.1:27017/mern-chat-app', {
+    console.log(process.env.PORT)
+    const conn = await mongoose.connect('mongodb+srv://saurabh:saurabh@cluster0.t0izdgc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

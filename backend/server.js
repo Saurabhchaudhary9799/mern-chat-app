@@ -8,6 +8,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
 
 dotenv.config();
+console.log(process.env.DATABASE);
 connectDB();
 const app = express();
 
@@ -25,18 +26,23 @@ app.use("/api/message", messageRoutes);
 
 const __dirname1 = path.resolve();
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/frontend/build")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname1, "/frontend/build")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running..");
-  });
-}
+//   app.get("*", (req, res) =>
+//     res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+//   );
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("API is running..");
+//   });
+// }
 
+
+// app.get("/",(req,res)=>{
+//   app.use(express.static(path.resolve(__dirname , "fronted","build")));
+//   res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"));
+// })
 // --------------------------deployment------------------------------
 
 // Error Handling middlewares
